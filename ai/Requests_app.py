@@ -8,6 +8,7 @@ import os
 
 BASE =os.getenv('BASE_URL')
 
+
 response = requests.post(BASE + "Offline/Start", headers={'Content-Type': 'application/json'}, data=json.dumps({'level': 0.1, 'index': 0}))
 res = response.json()
 print(res['message'])

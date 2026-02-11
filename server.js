@@ -10,10 +10,10 @@ const socket = require('./socket');
 
 const app = express();
 const httpServer = createServer(app);
-const io = new Server(httpServer,{ cors: { origin: "http://localhost:3000",  methods: ["GET", "POST"] } });
+const io = new Server(httpServer,{ cors: { origin: process.env.FRONTEND_URL,  methods: ["GET", "POST"] } });
 
 socket(io);
-app.use(cors({ origin: "http://localhost:3000",  methods: ["GET", "POST", "PUT", "DELETE"], credentials: true }));
+app.use(cors({ origin: process.env.FRONTEND_URL,  methods: ["GET", "POST", "PUT", "DELETE"], credentials: true }));
 app.use(express.json());
 app.use((req, res, next) => {
   console.log(req.path, req.method);
